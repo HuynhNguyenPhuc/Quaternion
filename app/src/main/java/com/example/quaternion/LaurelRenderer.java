@@ -212,11 +212,6 @@ public class LaurelRenderer implements GLSurfaceView.Renderer {
         final float eyeY = 0.0f;
         final float eyeZ = 7.5f;
 
-        /* Set up the center point */
-        center[0] += eyeX;
-        center[1] += eyeY;
-        center[2] += eyeZ;
-
         final float lookX = 0.0f;
         final float lookY = 0.0f;
         final float lookZ = 0.0f;

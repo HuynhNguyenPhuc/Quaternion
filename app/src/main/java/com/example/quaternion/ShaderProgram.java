@@ -70,7 +70,7 @@ public class ShaderProgram {
                 "varying vec3 v_Normal;\n" +
                 "varying vec2 v_TexCoord;\n" +
                 "void main() {\n" +
-                "   mat4 u_MVMatrix = u_ModelMatrix * u_ViewMatrix;\n" +
+                "   mat4 u_MVMatrix = u_ViewMatrix * u_ModelMatrix;\n" +
                 "   mat4 u_MVNormalMatrix = transpose(inverse(u_MVMatrix));\n" +
                 "   vec4 w_Position = u_MVMatrix * a_Position;\n" +
                 "   v_Position = w_Position.xyz;\n" +
@@ -103,54 +103,6 @@ public class ShaderProgram {
                 "    float s_component = pow(max(2.0 * temp * temp - 1.0, 0.1), nS);\n" +
                 "    vec3 color = kA + kD * d_component * 1.0/(1.0 + 0.25*pow(distance(u_LightPosition, v_Position), 2.0)) + kS * s_component;\n" +
                 "    gl_FragColor = texture2D(u_Texture, v_TexCoord) * vec4(color, 1.0) ;\n" +
-                "}\n";
-    }
-
-    static String getMultipleInstancesVertexShader() {
-        return
-                "precision mediump float;\n" +
-                "uniform mat4 u_ViewMatrix;\n" +
-                "uniform mat4 u_ProjectionMatrix;\n" +
-                "attribute vec4 a_Position;\n" +
-                "attribute mat4 a_ModelMatrix;\n" +
-                "attribute vec4 a_Color;\n" +
-                "varying vec4 v_Color;\n" +
-                "void main() {\n" +
-                "   v_Color = a_Color;\n" +
-                "   gl_Position = u_ProjectionMatrix * u_ViewMatrix * a_ModelMatrix * a_Position;\n" +
-                "}\n";
-    }
-
-    static String getMultipleInstancesFragmentShader() {
-        return
-                "precision mediump float;\n" +
-                "varying vec4 v_Color;\n" +
-                "void main() {\n" +
-                "    gl_FragColor = v_Color;\n" +
-                "}\n";
-    }
-
-    static String getSimpleVertexShader() {
-        return
-                "precision mediump float;\n" +
-                "uniform mat4 u_ModelMatrix;\n" +
-                "uniform mat4 u_ViewMatrix;\n" +
-                "uniform mat4 u_ProjectionMatrix;\n" +
-                "uniform float u_PointSize;\n" +
-                "attribute vec4 a_Position;\n" +
-                "void main() {\n" +
-                "   mat4 u_MVPMatrix = u_ProjectionMatrix * u_ViewMatrix * u_ModelMatrix;\n" +
-                "   gl_Position = u_MVPMatrix * a_Position;\n" +
-                "   gl_PointSize = u_PointSize;\n" +
-                "}\n";
-    }
-
-    static String getSimpleFragmentShader() {
-        return
-                "precision mediump float;\n" +
-                "uniform vec4 u_Color;\n" +
-                "void main() {\n" +
-                "    gl_FragColor = u_Color;\n" +
                 "}\n";
     }
 
