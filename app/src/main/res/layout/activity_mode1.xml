@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <ScrollView
+        android:id="@+id/seekbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Euler Angles"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X-Axis"
+                tools:ignore="HardcodedText" />
+
+            <SeekBar
+                android:id="@+id/seekbar_x"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="360" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Y-Axis"
+                tools:ignore="HardcodedText" />
+
+            <SeekBar
+                android:id="@+id/seekbar_y"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="90"
+                android:max="360" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Z-Axis"
+                tools:ignore="HardcodedText" />
+
+            <SeekBar
+                android:id="@+id/seekbar_z"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="360" />
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/gl_surface_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/seekbar_container" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
