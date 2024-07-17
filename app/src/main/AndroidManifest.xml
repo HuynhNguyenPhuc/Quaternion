@@ -30,5 +30,6 @@
         <activity android:name=".Mode2Activity"></activity>
         <activity android:name=".Mode2ViewActivity"></activity>
         <activity android:name=".Mode3Activity"></activity>
+        <activity android:name=".Mode3ViewActivity"></activity>
     </application>
 </manifest>

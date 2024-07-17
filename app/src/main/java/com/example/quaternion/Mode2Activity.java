@@ -15,7 +15,6 @@ public class Mode2Activity extends AppCompatActivity {
 
         String mode = getIntent().getStringExtra("mode");
 
-        // Vector inputs
         EditText vectorXInput = findViewById(R.id.x);
         EditText vectorYInput = findViewById(R.id.y);
         EditText vectorZInput = findViewById(R.id.z);

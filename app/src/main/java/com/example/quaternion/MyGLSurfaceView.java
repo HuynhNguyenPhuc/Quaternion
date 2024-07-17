@@ -15,8 +15,8 @@ public class MyGLSurfaceView extends GLSurfaceView {
         this.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
     }
 
-    public void updateAngles(Object... args) {
-        mRenderer.setAngles(args);
+    public void updateValues(Object... args) {
+        mRenderer.setArguments(args);
         requestRender();
     }
 }

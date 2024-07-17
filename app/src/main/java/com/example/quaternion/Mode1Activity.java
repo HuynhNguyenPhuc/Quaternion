@@ -69,6 +69,6 @@ public class Mode1Activity extends AppCompatActivity {
         float normalizedAngleY = (float) angleY / seekBarY.getMax() * 360.0f;
         float normalizedAngleZ = (float) angleZ / seekBarZ.getMax() * 360.0f;
 
-        mGLView.updateAngles(normalizedAngleX, normalizedAngleY, normalizedAngleZ);
+        mGLView.updateValues(normalizedAngleX, normalizedAngleY, normalizedAngleZ);
     }
 }

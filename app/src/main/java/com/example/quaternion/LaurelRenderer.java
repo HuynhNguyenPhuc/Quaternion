@@ -7,12 +7,10 @@ import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
 import android.opengl.Matrix;
-import android.util.Log;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -26,6 +24,9 @@ public class LaurelRenderer implements GLSurfaceView.Renderer {
     private float gamma;
     private Vector axis;
     private float angle;
+    private UnitQuaternion q1;
+    private UnitQuaternion q2;
+    private float t;
 
     private final float[] mModelMatrix = new float[16];
     private final float[] mViewMatrix = new float[16];
@@ -97,16 +98,27 @@ public class LaurelRenderer implements GLSurfaceView.Renderer {
                 this.axis = new Vector ((Float) args[0], (Float) args[1], (Float) args[2]);
                 this.angle = (Float) args[3];
 
-                UnitQuaternion q = new UnitQuaternion(axis, (float) Math.toRadians(angle));
+                UnitQuaternion q = new UnitQuaternion(axis, (float) Math.toRadians(angle / 2.0f));
                 float[] angles = q.getEulerAngles();
                 this.alpha = angles[0];
                 this.beta = angles[1];
                 this.gamma = angles[2];
                 break;
+            case "mode3":
+                this.q1 = (UnitQuaternion) args[0];
+                this.q2 = (UnitQuaternion) args[1];
+                this.t = 0.0f;
+
+                UnitQuaternion q_curr = UnitQuaternion.slerp(q1, q2, t);
+                float[] curr_angles = q_curr.getEulerAngles();
+                this.alpha = curr_angles[0];
+                this.beta = curr_angles[1];
+                this.gamma = curr_angles[2];
+                break;
         }
     }
 
-    public void setAngles(Object... args){
+    public void setArguments(Object... args){
         switch (mode) {
             case "mode1":
                 this.alpha = (Float) args[0];
@@ -116,12 +128,22 @@ public class LaurelRenderer implements GLSurfaceView.Renderer {
             case "mode2":
                 this.angle = (Float) args[0];
 
-                UnitQuaternion q = new UnitQuaternion(axis, (float) Math.toRadians(angle));
+                UnitQuaternion q = new UnitQuaternion(axis, (float) Math.toRadians(angle / 2.0f));
                 float[] angles = q.getEulerAngles();
 
                 this.alpha = angles[0];
                 this.beta = angles[1];
                 this.gamma = angles[2];
+                break;
+            case "mode3":
+                this.t = (Float) args[0];
+
+                UnitQuaternion q_curr = UnitQuaternion.slerp(q1, q2, t);
+                float[] curr_angles = q_curr.getEulerAngles();
+
+                this.alpha = curr_angles[0];
+                this.beta = curr_angles[1];
+                this.gamma = curr_angles[2];
                 break;
         }
     }
@@ -260,6 +282,7 @@ public class LaurelRenderer implements GLSurfaceView.Renderer {
         GLES30.glClear(GLES30.GL_DEPTH_BUFFER_BIT | GLES30.GL_COLOR_BUFFER_BIT);
 
         switch (mode){
+            case "mode3":
             case "mode2":
             case "mode1":
                 Matrix.setIdentityM(mModelMatrix, 0);

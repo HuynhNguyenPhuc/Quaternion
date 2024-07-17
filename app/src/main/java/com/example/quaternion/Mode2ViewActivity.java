@@ -44,6 +44,6 @@ public class Mode2ViewActivity extends AppCompatActivity {
 
     private void updateScreen(int angle) {
         float normalizedAngle = (float) angle / seekBarAngle.getMax() * 360.0f;
-        mGLView.updateAngles(normalizedAngle);
+        mGLView.updateValues(normalizedAngle);
     }
 }
