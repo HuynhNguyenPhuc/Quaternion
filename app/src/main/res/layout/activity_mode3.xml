@@ -11,11 +11,10 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- AABB 1 inputs -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="First AABB Minimum Corner"
+            android:text="Quaternion 1"
             tools:ignore="HardcodedText" />
 
         <LinearLayout
@@ -24,37 +23,46 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/aabb1_min_x"
+                android:id="@+id/q1_x"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="x"
                 android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
+                tools:ignore="Autofill,HardcodedText,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
 
             <EditText
-                android:id="@+id/aabb1_min_y"
+                android:id="@+id/q1_y"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="y"
                 android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
+                tools:ignore="Autofill,HardcodedText,DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
 
             <EditText
-                android:id="@+id/aabb1_min_z"
+                android:id="@+id/q1_z"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="z"
                 android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
+                tools:ignore="Autofill,HardcodedText,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+
+            <EditText
+                android:id="@+id/q1_w"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="w"
+                android:inputType="numberSigned|numberDecimal"
+                tools:ignore="Autofill,HardcodedText,DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="First AABB Maximum Corner"
+            android:text="Quaternion 2"
             tools:ignore="HardcodedText" />
 
         <LinearLayout
@@ -63,178 +71,47 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/aabb1_max_x"
+                android:id="@+id/q2_x"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="x"
                 android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck" />
 
             <EditText
-                android:id="@+id/aabb1_max_y"
+                android:id="@+id/q2_y"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="y"
                 android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck" />
 
             <EditText
-                android:id="@+id/aabb1_max_z"
+                android:id="@+id/q2_z"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="z"
                 android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
-        </LinearLayout>
-
-        <!-- AABB 2 inputs -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Second AABB Minimum Corner"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck" />
 
             <EditText
-                android:id="@+id/aabb2_min_x"
+                android:id="@+id/q2_w"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="x"
+                android:hint="w"
                 android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
-
-            <EditText
-                android:id="@+id/aabb2_min_y"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="y"
-                android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
-
-            <EditText
-                android:id="@+id/aabb2_min_z"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="z"
-                android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Second AABB Maximum Corner"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/aabb2_max_x"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="x"
-                android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
-
-            <EditText
-                android:id="@+id/aabb2_max_y"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="y"
-                android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
-
-            <EditText
-                android:id="@+id/aabb2_max_z"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="z"
-                android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
-        </LinearLayout>
-
-        <!-- Direction vector inputs -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Direction Vector"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/direction_x"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="x"
-                android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
-
-            <EditText
-                android:id="@+id/direction_y"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="y"
-                android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
-
-            <EditText
-                android:id="@+id/direction_z"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="z"
-                android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/time"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="t"
-                android:inputType="numberSigned|numberDecimal"
-                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <!-- Submit button -->
+
             <Button
                 android:id="@+id/submit_button"
                 android:layout_width="wrap_content"
@@ -243,7 +120,6 @@
                 android:text="Submit"
                 tools:ignore="ButtonStyle,HardcodedText" />
 
-            <!-- Return button -->
             <Button
                 android:id="@+id/return_button"
                 android:layout_width="wrap_content"
@@ -251,6 +127,5 @@
                 android:text="Return"
                 tools:ignore="ButtonStyle,HardcodedText" />
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

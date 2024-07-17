@@ -1,13 +1,13 @@
 package com.example.quaternion;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Mode3Activity extends AppCompatActivity {
-
-    private MyGLSurfaceView mGLView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,66 +16,45 @@ public class Mode3Activity extends AppCompatActivity {
 
         String mode = getIntent().getStringExtra("mode");
 
-        // AABB 1 inputs
-        EditText aabb1MinXInput = findViewById(R.id.aabb1_min_x);
-        EditText aabb1MinYInput = findViewById(R.id.aabb1_min_y);
-        EditText aabb1MinZInput = findViewById(R.id.aabb1_min_z);
+        EditText q1X = findViewById(R.id.q1_x);
+        EditText q1Y = findViewById(R.id.q1_y);
+        EditText q1Z = findViewById(R.id.q1_z);
+        EditText q1W = findViewById(R.id.q1_w);
 
-        EditText aabb1MaxXInput = findViewById(R.id.aabb1_max_x);
-        EditText aabb1MaxYInput = findViewById(R.id.aabb1_max_y);
-        EditText aabb1MaxZInput = findViewById(R.id.aabb1_max_z);
+        EditText q2X = findViewById(R.id.q2_x);
+        EditText q2Y = findViewById(R.id.q2_y);
+        EditText q2Z = findViewById(R.id.q2_z);
+        EditText q2W = findViewById(R.id.q2_w);
 
-        // AABB 2 inputs
-        EditText aabb2MinXInput = findViewById(R.id.aabb2_min_x);
-        EditText aabb2MinYInput = findViewById(R.id.aabb2_min_y);
-        EditText aabb2MinZInput = findViewById(R.id.aabb2_min_z);
+        Button submitButton = findViewById(R.id.submit_button);
+        submitButton.setOnClickListener(v -> {
+            float q1XValue = Float.parseFloat(q1X.getText().toString());
+            float q1YValue = Float.parseFloat(q1Y.getText().toString());
+            float q1ZValue = Float.parseFloat(q1Z.getText().toString());
+            float q1WValue = Float.parseFloat(q1W.getText().toString());
 
-        EditText aabb2MaxXInput = findViewById(R.id.aabb2_max_x);
-        EditText aabb2MaxYInput = findViewById(R.id.aabb2_max_y);
-        EditText aabb2MaxZInput = findViewById(R.id.aabb2_max_z);
+            float q2XValue = Float.parseFloat(q2X.getText().toString());
+            float q2YValue = Float.parseFloat(q2Y.getText().toString());
+            float q2ZValue = Float.parseFloat(q2Z.getText().toString());
+            float q2WValue = Float.parseFloat(q2W.getText().toString());
 
-        // Direction vector inputs
-        EditText directionXInput = findViewById(R.id.direction_x);
-        EditText directionYInput = findViewById(R.id.direction_y);
-        EditText directionZInput = findViewById(R.id.direction_z);
+            Intent intent = new Intent(Mode3Activity.this, Mode3ViewActivity.class);
 
-        // Time input
-        EditText timeInput = findViewById(R.id.time);
+            intent.putExtra("mode", mode);
+            intent.putExtra("q1_x", q1XValue);
+            intent.putExtra("q1_y", q1YValue);
+            intent.putExtra("q1_z", q1ZValue);
+            intent.putExtra("q1_w", q1WValue);
 
-        findViewById(R.id.submit_button).setOnClickListener(v -> {
-            // AABB 1 values
-            float aabb1MinX = Float.parseFloat(aabb1MinXInput.getText().toString());
-            float aabb1MinY = Float.parseFloat(aabb1MinYInput.getText().toString());
-            float aabb1MinZ = Float.parseFloat(aabb1MinZInput.getText().toString());
+            intent.putExtra("q2_x", q2XValue);
+            intent.putExtra("q2_y", q2YValue);
+            intent.putExtra("q2_z", q2ZValue);
+            intent.putExtra("q2_w", q2WValue);
 
-            float aabb1MaxX = Float.parseFloat(aabb1MaxXInput.getText().toString());
-            float aabb1MaxY = Float.parseFloat(aabb1MaxYInput.getText().toString());
-            float aabb1MaxZ = Float.parseFloat(aabb1MaxZInput.getText().toString());
-
-            // AABB 2 values
-            float aabb2MinX = Float.parseFloat(aabb2MinXInput.getText().toString());
-            float aabb2MinY = Float.parseFloat(aabb2MinYInput.getText().toString());
-            float aabb2MinZ = Float.parseFloat(aabb2MinZInput.getText().toString());
-
-            float aabb2MaxX = Float.parseFloat(aabb2MaxXInput.getText().toString());
-            float aabb2MaxY = Float.parseFloat(aabb2MaxYInput.getText().toString());
-            float aabb2MaxZ = Float.parseFloat(aabb2MaxZInput.getText().toString());
-
-            // Direction vector values
-            float directionX = Float.parseFloat(directionXInput.getText().toString());
-            float directionY = Float.parseFloat(directionYInput.getText().toString());
-            float directionZ = Float.parseFloat(directionZInput.getText().toString());
-
-            // Time value
-            float time = Float.parseFloat(timeInput.getText().toString());
-
-            mGLView = new MyGLSurfaceView(this, mode);
-
-            setContentView(mGLView);
+            startActivity(intent);
         });
 
-        findViewById(R.id.return_button).setOnClickListener(v -> {
-            finish();
-        });
+        Button returnButton = findViewById(R.id.return_button);
+        returnButton.setOnClickListener(v -> finish());
     }
 }

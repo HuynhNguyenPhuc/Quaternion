@@ -1,11 +1,11 @@
 package com.example.quaternion;
 
 public class Quaternion {
-    public final float w;
-    public final float x;
-    public final float y;
-    public final float z;
-    public final Vector v;
+    public float w;
+    public float x;
+    public float y;
+    public float z;
+    public Vector v;
 
     public Quaternion(float w, float x, float y, float z) {
         this.w = w;
@@ -40,6 +40,10 @@ public class Quaternion {
         return new Quaternion(w / mag, x / mag, y / mag, z / mag);
     }
 
+    public Quaternion negate() {
+        return new Quaternion(-w, -x, -y, -z);
+    }
+
     public Quaternion conjugate() {
         return new Quaternion(w, -x, -y, -z);
     }
@@ -69,6 +73,10 @@ public class Quaternion {
         Vector v = v1.add(v2).add(v3);
         float newW = this.w * other.w - this.v.dotProduct(other.v);
         return new Quaternion(newW, v.x, v.y, v.z);
+    }
+
+    public float dotProduct(Quaternion other) {
+        return w * other.w + x * other.x + y * other.y + z * other.z;
     }
 
     public Vector getVector(){
